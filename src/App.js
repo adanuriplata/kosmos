@@ -142,7 +142,7 @@ const Component = ({
 
   const onResize = async (e) => {
     // ACTUALIZAR ALTO Y ANCHO
-    const { initialLeft, initialWidth } = handleResizeStart(e);
+    // const { initialLeft, initialWidth } = handleResizeStart(e);
     let newWidth = e.width;
     let newHeight = e.height;
 
@@ -153,15 +153,11 @@ const Component = ({
       newHeight = parentBounds?.height - top;
     if (positionMaxLeft > parentBounds?.width)
       newWidth = parentBounds?.width - left;
-    console.log("initial left", initialLeft);
-    console.log("initial width", initialWidth);
 
     updateMoveable(id, {
       top,
-      // left: left,
-      // width: newWidth,
-      left: initialLeft ? initialLeft : left,
-      width: initialWidth ? initialWidth : newWidth,
+      left,
+      width: newWidth,
       height: newHeight,
       color,
       image,
@@ -188,6 +184,7 @@ const Component = ({
   };
 
   const onResizeEnd = async (e) => {
+    const { initialLeft } = handleResizeStart(e);
     let newWidth = e.lastEvent?.width;
     let newHeight = e.lastEvent?.height;
 
@@ -207,7 +204,7 @@ const Component = ({
     // const absoluteLeft = left + beforeTranslate[0];
 
     const absoluteTop = top + beforeTranslate[1];
-    const absoluteLeft = left + beforeTranslate[0];
+    const absoluteLeft = initialLeft + beforeTranslate[0];
     // console.log(drag);
     // console.log(top);
 
