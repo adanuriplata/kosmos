@@ -200,13 +200,8 @@ const Component = ({
     const { drag } = lastEvent;
     const { beforeTranslate } = drag;
 
-    // const absoluteTop = top + beforeTranslate[1];
-    // const absoluteLeft = left + beforeTranslate[0];
-
     const absoluteTop = top + beforeTranslate[1];
     const absoluteLeft = initialLeft + beforeTranslate[0];
-    // console.log(drag);
-    // console.log(top);
 
     updateMoveable(
       id,
@@ -235,7 +230,7 @@ const Component = ({
           width: width,
           height: height,
           background: `url(${image})`,
-          backgroundSize: "contain",
+          backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
         }}
         onClick={() => setSelected(id)}
