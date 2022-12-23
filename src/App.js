@@ -84,6 +84,7 @@ const App = () => {
           background: "black",
           height: "80vh",
           width: "80vw",
+          overflow: "hidden",
         }}
       >
         {moveableComponents.map((item, index) => (
@@ -142,7 +143,6 @@ const Component = ({
 
   const onResize = async (e) => {
     // ACTUALIZAR ALTO Y ANCHO
-    // const { initialLeft, initialWidth } = handleResizeStart(e);
     let newWidth = e.width;
     let newHeight = e.height;
 
